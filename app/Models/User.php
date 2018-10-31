@@ -30,9 +30,9 @@ class User extends Authenticatable
     /**
      * 头像生成
      */
-    public function gravetar($size = '99')
+    public function gravetar($size = '100')
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
-        return 'http://www.gravatar.com/avatar/$hash?s=$size';
+        return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 }
