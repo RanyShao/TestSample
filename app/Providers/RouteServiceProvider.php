@@ -39,7 +39,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapWebHomeRoutes();
         //
     }
 
@@ -52,9 +51,24 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+
+        Route::group([
+            'middleware' => 'web',
+        ],function (){
+
+            Route::group([
+                'namespace' => $this->namespace
+            ],function (){
+                require base_path('routes/web.php');
+            });
+
+            Route::group([
+                'namespace' => $this->namespace
+            ],function (){
+                require base_path('routes/web.home.php');
+            });
+
+        });
     }
 
     /**
@@ -72,10 +86,4 @@ class RouteServiceProvider extends ServiceProvider
              ->group(base_path('routes/api.php'));
     }
 
-    protected function mapWebHomeRoutes()
-    {
-        Route::middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.home.php'));
-    }
 }
