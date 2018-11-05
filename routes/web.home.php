@@ -20,3 +20,8 @@ Route::get('/login','UsersController@login')->name('login');
 Route::get('/register','UsersController@create')->name('register');
 
 Route::resource('users','UsersController');
+
+//login
+Route::get('login','SessionsController@login');
+Route::post('login','SessionsController@store');
+Route::delete('logout','SessionsController@logout');
