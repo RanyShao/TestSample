@@ -22,6 +22,6 @@ Route::get('/register','UsersController@create')->name('register');
 Route::resource('users','UsersController');
 
 //login
-Route::get('login','SessionsController@login');
-Route::post('login','SessionsController@store');
-Route::delete('logout','SessionsController@logout');
+Route::get('login','SessionsController@login')->name('login');
+Route::post('login','SessionsController@store')->name('login');
+Route::delete('logout','SessionsController@logout')->name('logout');

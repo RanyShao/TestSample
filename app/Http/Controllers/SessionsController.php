@@ -10,6 +10,7 @@ class SessionsController extends Controller
     //
     public function login()
     {
+        return view('sessions.login');
     }
 
     public function store(Request $request)
